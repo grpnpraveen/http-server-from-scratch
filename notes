@@ -1,0 +1,18 @@
+Status Line
+
+Headers 
+
+Response Body
+
+
+
+
+## Routes 
+
+1. /echo/fanny_magnet
+2. /user-agent   
+3. /files/[file-name] # GET
+4. /files/[file-name] # POST
+5. Header: accept-encoding
+
+
