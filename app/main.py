@@ -92,15 +92,9 @@ def send_response(response_code,response=None,extra_data=None):
         if extra_data is not None:
             if extra_data["accept-encoding"] is not None:
                 if "gzip" in extra_data["accept-encoding"].split(", "):
-                    print("RRR")
-                    print(response)
-                    print(len(response))
-                    # byte_data = response.encode()
-                    # compressed_data = gzip.compress(byte_data)
-                    # print(compressed_data)
                     compressed_val = gzip.compress(str.encode(response))
+                    #below line is the last stage
                     return f"HTTP/1.1 200 OK\r\nContent-Encoding: gzip\r\nContent-Type: text/plain\r\nContent-Length: {len(compressed_val)}\r\n\r\n".encode() + compressed_val
-                    # return f"HTTP/1.1 200 OK\r\nContent-Encoding: gzip\r\nContent-Type: {content_type}\r\nContent-Length: {len(compressed_data)}\r\n\r\n{compressed_data}\r\n\r\n"  
                 else:
                     return f"HTTP/1.1 200 OK\r\nContent-Type: {content_type}\r\nContent-Length: {len(response)}\r\n\r\n{response}\r\n\r\n".encode()
 
